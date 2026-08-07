@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Settimana a Verona — Programma di Viaggio</title>
+<meta name="description" content="Il programma della settimana a Verona, giorno per giorno.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1ece1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141b24">
+<style>
+  :root{
+    color-scheme: light;
+    --ink: #1e2a38;
+    --ink-soft: #445267;
+    --stone: #f1ece1;
+    --stone-raised: #fbf8f2;
+    --stone-dim: #736c60;
+    --border: #ddd2bd;
+    --enrosadira: #b1583f;
+    --enrosadira-tint: #f0dbce;
+    --carezza: #276f6b;
+    --carezza-tint: #d9ebe8;
+    --amarone: #7d2a44;
+    --amarone-tint: #eedde1;
+    --focus: #2f5fd6;
+    --shadow: 0 1px 2px rgba(30,42,56,.07), 0 8px 24px rgba(30,42,56,.09);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --ink: #ece4d4;
+      --ink-soft: #c7bda8;
+      --stone: #141b23;
+      --stone-raised: #1d2732;
+      --stone-dim: #998f7c;
+      --border: #333e49;
+      --enrosadira: #e08b6e;
+      --enrosadira-tint: #3a2b25;
+      --carezza: #5db9b2;
+      --carezza-tint: #1b3432;
+      --amarone: #dd8ba5;
+      --amarone-tint: #3a2531;
+      --focus: #86a9ff;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --ink: #ece4d4;
+    --ink-soft: #c7bda8;
+    --stone: #141b23;
+    --stone-raised: #1d2732;
+    --stone-dim: #998f7c;
+    --border: #333e49;
+    --enrosadira: #e08b6e;
+    --enrosadira-tint: #3a2b25;
+    --carezza: #5db9b2;
+    --carezza-tint: #1b3432;
+    --amarone: #dd8ba5;
+    --amarone-tint: #3a2531;
+    --focus: #86a9ff;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--stone);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,p{ margin:0; }
+  h1,h2,h3{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+    font-weight:600;
+    text-wrap:balance;
+    color:var(--ink);
+  }
+  button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  button:focus-visible, a:focus-visible{ outline:3px solid var(--focus); outline-offset:3px; border-radius:4px; }
+  .icon{ width:1em; height:1em; display:block; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- layout shell ---------- */
+  .screen{ min-height:100vh; min-height:100dvh; width:100%; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 20px 64px; }
+
+  /* ---------- welcome ---------- */
+  #screen-welcome{
+    position:fixed; inset:0; z-index:20;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden;
+    background:linear-gradient(175deg,#1a2130 0%,#4d3b46 48%,#b1583f 100%);
+    color:#f6efe4;
+    cursor:pointer;
+    transition:opacity .7s ease, visibility .7s ease;
+  }
+  #screen-welcome.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+  .welcome-inner{ position:relative; z-index:2; padding:0 32px; max-width:520px; }
+  .welcome-eyebrow{
+    font-size:.8rem; letter-spacing:.16em; text-transform:uppercase;
+    color:#e9c6b6; font-weight:600; margin-bottom:18px;
+    opacity:0; animation:riseIn .8s ease .15s forwards;
+  }
+  .welcome-title{
+    font-size:clamp(2.6rem,10vw,4rem); color:#fbf5ec; margin-bottom:20px;
+    opacity:0; animation:riseIn .9s ease .4s forwards;
+  }
+  .welcome-sub{
+    font-size:1.15rem; color:#f0e3d6; line-height:1.55; max-width:36ch; margin:0 auto;
+    opacity:0; animation:riseIn .9s ease .75s forwards;
+  }
+  .welcome-hint{
+    margin-top:44px; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:#dcb9a8;
+    opacity:0; animation:riseIn .9s ease 1.5s forwards, pulse 2.2s ease 2.4s infinite;
+  }
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  @keyframes pulse{ 0%,100%{ opacity:.55; } 50%{ opacity:1; } }
+  .welcome-peaks{ position:absolute; left:0; right:0; bottom:0; width:100%; height:auto; z-index:1; opacity:.9; }
+  @media (prefers-reduced-motion: reduce){
+    .welcome-eyebrow,.welcome-title,.welcome-sub,.welcome-hint{ opacity:1; animation:none; }
+  }
+
+  /* ---------- calendar ---------- */
+  #screen-calendar{ padding-top:8px; }
+  .cal-header{ padding:36px 0 26px; display:flex; flex-direction:column; gap:10px; }
+  .eyebrow{
+    font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+    color:var(--enrosadira);
+  }
+  .cal-header h1{ font-size:clamp(1.9rem,6vw,2.4rem); }
+  .cal-sub{ color:var(--stone-dim); font-size:1.05rem; }
+
+  .day-list{ display:flex; flex-direction:column; gap:14px; }
+  .day-card{
+    display:flex; align-items:center; gap:16px;
+    width:100%; text-align:left;
+    background:var(--stone-raised);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 16px;
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .day-card:hover{ transform:translateY(-1px); }
+  .day-card:active{ transform:translateY(0); }
+  .day-badge{
+    flex:none; width:52px; height:52px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--card-tint, var(--enrosadira-tint));
+    color:var(--card-accent, var(--enrosadira));
+    font-size:1.5rem;
+  }
+  .day-card-text{ flex:1 1 auto; min-width:0; display:flex; flex-direction:column; }
+  .day-card-eyebrow{ font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--stone-dim); }
+  .day-card-title{ font-family:Georgia,"Iowan Old Style",serif; font-size:1.28rem; font-weight:600; margin-top:2px; }
+  .day-card-teaser{ font-size:.98rem; color:var(--stone-dim); margin-top:4px; line-height:1.45; }
+  .day-card-chev{ flex:none; width:22px; height:22px; color:var(--stone-dim); }
+
+  /* ---------- detail ---------- */
+  #screen-detail{ display:flex; flex-direction:column; }
+  .detail-header{
+    position:sticky; top:0; z-index:5;
+    background:var(--stone);
+    background:color-mix(in srgb, var(--stone) 92%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:14px 20px;
+  }
+  .detail-header-inner{ max-width:640px; margin:0 auto; }
+  .btn-back{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:1rem; font-weight:600; color:var(--carezza);
+    padding:8px 10px 8px 4px; margin-left:-4px; border-radius:8px;
+  }
+  .btn-back .icon{ width:20px; height:20px; }
+  .detail-title-row{ display:flex; align-items:center; gap:14px; margin-top:10px; }
+  .detail-badge{
+    flex:none; width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--card-tint, var(--enrosadira-tint));
+    color:var(--card-accent, var(--enrosadira));
+    font-size:1.3rem;
+  }
+  .detail-title-row h1{ font-size:1.5rem; line-height:1.2; }
+  .detail-eyebrow{ font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--stone-dim); }
+
+  .detail-body{ padding-top:26px; }
+  .detail-teaser{ font-size:1.08rem; color:var(--ink-soft); margin-bottom:30px; line-height:1.55; }
+
+  .section-label{
+    font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--stone-dim); margin-bottom:14px;
+  }
+
+  .timeline{ list-style:none; margin:0 0 34px; padding:0; }
+  .timeline li{
+    display:grid; grid-template-columns:74px 1fr; gap:16px;
+    padding:13px 0; border-top:1px solid var(--border);
+  }
+  .timeline li:first-child{ border-top:none; }
+  .t-time{
+    font-variant-numeric:tabular-nums; font-weight:700; font-size:.95rem;
+    color:var(--enrosadira); padding-top:1px;
+  }
+  .t-text{ font-size:1.04rem; }
+
+  .info-card{
+    background:var(--stone-raised); border:1px solid var(--border); border-radius:12px;
+    padding:16px 18px; margin-bottom:14px;
+  }
+  .info-label{ font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--carezza); }
+  .info-name{ font-family:Georgia,"Iowan Old Style",serif; font-size:1.14rem; font-weight:600; margin-top:4px; }
+  .info-detail{ font-size:.97rem; color:var(--stone-dim); margin-top:4px; line-height:1.5; }
+
+  .tip-card{
+    background:var(--amarone-tint); border-radius:12px; padding:16px 18px; margin:22px 0 8px;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .tip-card .icon{ width:22px; height:22px; color:var(--amarone); flex:none; margin-top:2px; }
+  .tip-text{ font-size:.98rem; color:var(--ink); line-height:1.55; font-style:italic; }
+
+  .detail-nav{
+    margin-top:20px; padding-top:22px; border-top:1px solid var(--border);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .btn-nav, .btn-finish{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    width:100%; min-height:58px; padding:10px 18px;
+    background:var(--stone-raised); border:1px solid var(--border); border-radius:12px;
+    font-size:1rem; font-weight:600; text-align:left;
+  }
+  .btn-nav small, .btn-finish small{ display:block; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:.72rem; color:var(--stone-dim); margin-bottom:2px; }
+  .btn-nav .icon{ width:20px; height:20px; color:var(--stone-dim); flex:none; }
+  .btn-nav.next{ text-align:right; }
+  .btn-finish{
+    justify-content:center; background:var(--enrosadira); border-color:var(--enrosadira); color:#fff9f4;
+    font-size:1.05rem;
+  }
+
+  @media (min-width:480px){
+    .day-card{ padding:18px 20px; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <section id="screen-welcome" aria-label="Schermata di benvenuto">
+    <svg class="welcome-peaks" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#241823" d="M0,90 L0,58 L36,26 L64,50 L96,14 L128,52 L162,30 L198,58 L232,20 L266,50 L300,26 L336,54 L368,34 L400,52 L400,90 Z"></path>
+    </svg>
+    <div class="welcome-inner">
+      <p class="welcome-eyebrow">Da Roma a Verona</p>
+      <h1 class="welcome-title">Benvenuti</h1>
+      <p class="welcome-sub">In questi giorni scopriremo insieme Verona e tutto quello che c'è intorno.</p>
+      <p class="welcome-hint">Toccate per iniziare</p>
+    </div>
+  </section>
+
+  <section id="screen-calendar" class="screen" hidden>
+    <div class="wrap">
+      <header class="cal-header">
+        <p class="eyebrow">Il programma</p>
+        <h1>La settimana insieme</h1>
+        <p class="cal-sub">Toccate un giorno per vedere cosa faremo.</p>
+      </header>
+      <div class="day-list" id="day-list"></div>
+    </div>
+  </section>
+
+  <section id="screen-detail" class="screen" hidden>
+    <div class="detail-header">
+      <div class="detail-header-inner">
+        <button class="btn-back" id="btn-back" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5 8 12l6.5 7"></path></svg>
+          Calendario
+        </button>
+        <div class="detail-title-row">
+          <span class="detail-badge" id="detail-badge"></span>
+          <div>
+            <p class="detail-eyebrow" id="detail-eyebrow"></p>
+            <h1 id="detail-title"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="detail-body" id="detail-body"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var ICONS = {
+    suitcase: '<rect x="3.5" y="7.5" width="17" height="12" rx="2"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"></path><path d="M3.5 12.5h17"></path>',
+    arch: '<path d="M5 20V11a7 7 0 0 1 14 0v9"></path><path d="M3.5 20h17"></path><path d="M8 20v-6"></path><path d="M16 20v-6"></path>',
+    mountain: '<path d="M2.5 19.5 8.5 8.5 12 14 15.5 8.5 21.5 19.5Z"></path>',
+    drop: '<path d="M12 3.5s6.5 7.2 6.5 11.5a6.5 6.5 0 1 1-13 0C5.5 10.7 12 3.5 12 3.5Z"></path>',
+    grapes: '<path d="M12 3v3.2"></path><circle cx="9.3" cy="8.4" r="1.5"></circle><circle cx="14.7" cy="8.4" r="1.5"></circle><circle cx="7.6" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="16.4" cy="12" r="1.5"></circle><circle cx="9.3" cy="15.6" r="1.5"></circle><circle cx="14.7" cy="15.6" r="1.5"></circle><circle cx="12" cy="19.2" r="1.5"></circle>',
+    cablecar: '<path d="M3 5.5 21 8"></path><rect x="8.3" y="10" width="7.4" height="6.2" rx="1.3"></rect><path d="M10.5 10 10 8.1"></path><path d="M13.5 10 14.3 8.4"></path>',
+    canoe: '<path d="M2.5 15c2 2.2 17 2.2 19 0"></path><path d="M5.5 15c.5-4.2 3-8.2 6.5-8.2s6 4 6.5 8.2"></path><path d="M17.3 4.2 20 6.8"></path><path d="M20 4.2 17.3 6.8"></path>',
+    toast: '<path d="M5 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M7.5 11v8"></path><path d="M5 19h5"></path><path d="M14 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M16.5 11v8"></path><path d="M14 19h5"></path>',
+    chevronRight: '<path d="M9.5 5 16 12l-6.5 7"></path>',
+    sparkle: '<path d="M12 3v5"></path><path d="M12 16v5"></path><path d="M3 12h5"></path><path d="M16 12h5"></path><path d="M6.5 6.5l2.5 2.5"></path><path d="M15 15l2.5 2.5"></path><path d="M17.5 6.5 15 9"></path><path d="M9 15l-2.5 2.5"></path>'
+  };
+
+  var THEMES = {
+    enrosadira: { tint: 'var(--enrosadira-tint)', accent: 'var(--enrosadira)' },
+    carezza:    { tint: 'var(--carezza-tint)',    accent: 'var(--carezza)' },
+    amarone:    { tint: 'var(--amarone-tint)',    accent: 'var(--amarone)' }
+  };
+
+  function svg(name, extraClass){
+    return '<svg class="icon' + (extraClass ? ' ' + extraClass : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
+  }
+
+  var DAYS = [
+    {
+      icon: 'suitcase', theme: 'enrosadira',
+      title: "Arrivo a Verona",
+      teaser: "Si comincia! Arrivo, un po' di riposo e la prima passeggiata insieme.",
+      timeline: [
+        { time: "13:00", text: "Arrivo a Verona. Si parte!" },
+        { time: "14:30", text: "Riposino pomeridiano e spuntino, con calma." },
+        { time: "19:00", text: "Passeggiata a Piazza Bra, per salutare l'Arena." }
+      ],
+      info: [],
+      tip: "Prima sera tranquilla: il tempo di respirare l'aria di Verona prima della settimana che vi aspetta."
+    },
+    {
+      icon: 'arch', theme: 'carezza',
+      title: "Verona da scoprire",
+      teaser: "Il centro storico tutto per voi: piazze, il balcone più famoso e un buon piatto veronese.",
+      timeline: [
+        { time: "09:30", text: "Piazza Erbe, il mercato più antico di Verona." },
+        { time: "10:30", text: "Casa di Giulietta e il suo balcone." },
+        { time: "11:30", text: "Castelvecchio e il Ponte Scaligero." },
+        { time: "13:00", text: "Pranzo tipico in centro: bigoli o risotto all'Amarone." },
+        { time: "15:30", text: "Passeggiata lungo l'Adige fino a Ponte Pietra." },
+        { time: "17:00", text: "Gelato con calma, tempo libero." },
+        { time: "19:30", text: "Aperitivo in piazza." }
+      ],
+      info: [],
+      tip: "Verona si gira benissimo a piedi: scarpe comode e nessuna fretta."
+    },
+    {
+      icon: 'mountain', theme: 'enrosadira',
+      title: "Lago di Carezza e Novacella",
+      teaser: "Si parte per le Dolomiti: il lago più turchese d'Italia e un'abbazia di 900 anni.",
+      timeline: [
+        { time: "08:00", text: "Partenza da Verona. Un caffè prima, d'obbligo." },
+        { time: "10:30", text: "Arrivo al Lago di Carezza: giro del lago e foto. L'acqua sembra finta, è così turchese." },
+        { time: "13:00", text: "Pranzo alla Stube Prameshuber, Nova Levante: casunzei fatti in casa." },
+        { time: "14:30", text: "Abbazia di Novacella: chiostro, biblioteca antica, monaci gentili (silenzio, mi raccomando)." },
+        { time: "17:30", text: "Arrivo a Fortezza, Hotel Schloss Freundsberg: check-in e relax." }
+      ],
+      info: [
+        { label: "Pranzo", name: "Stube Prameshuber", detail: "Via Principale 8, Nova Levante — casunzei e speck di cervo, 18–25€" },
+        { label: "Pernottamento", name: "Hotel Schloss Freundsberg", detail: "Fortezza — un castello medievale con vista sulla vallata" }
+      ],
+      tip: "Si dorme in un castello vero, questa notte."
+    },
+    {
+      icon: 'drop', theme: 'carezza',
+      title: "Lago di Braies e Dobbiaco",
+      teaser: "Il lago più fotografato d'Italia, poi uno più tranquillo, poi si torna a casa a Verona.",
+      timeline: [
+        { time: "08:00", text: "Partenza da Fortezza." },
+        { time: "09:30", text: "Lago di Braies: arrivare presto vale sempre la pena." },
+        { time: "10:00", text: "Tempo per foto, oppure una canoa sul lago." },
+        { time: "12:30", text: "Pranzo al Rifugio Sorau, vista sul lago." },
+        { time: "14:30", text: "Lago di Dobbiaco: passeggiata tranquilla nel bosco." },
+        { time: "18:45", text: "Rientro a Verona, cena con calma." }
+      ],
+      info: [
+        { label: "Pranzo", name: "Rifugio Sorau", detail: "Casunzei, speck, scamorza — vista sul lago, 20–30€" }
+      ],
+      tip: "Il Lago di Braies è stato set di una nota serie TV, ma la vista dal vivo batte lo schermo."
+    },
+    {
+      icon: 'grapes', theme: 'amarone',
+      title: "Cascate, Valpolicella e Ponte di Veja",
+      teaser: "Cascate nel bosco, un buon bicchiere di Amarone e un ponte di roccia naturale.",
+      timeline: [
+        { time: "09:30", text: "Cascate di Molina: passeggiata facile nel bosco (1h30)." },
+        { time: "12:30", text: "Pranzo e degustazione alla Cantina Valpolicella Negrar." },
+        { time: "15:00", text: "Ponte di Veja: un arco di roccia naturale sospeso sopra la valle." },
+        { time: "20:00", text: "Cena con vista al Paradiso Imperfetto, Sant'Anna d'Alfaedo." }
+      ],
+      info: [
+        { label: "Pranzo", name: "Cantina Valpolicella Negrar", detail: "Degustazione vini + pranzo, Amarone DOC, 35–50€" },
+        { label: "Cena", name: "Paradiso Imperfetto", detail: "Sant'Anna d'Alfaedo, tel. 045 7286504 — vista sulla valle, 45–65€, prenotazione consigliata" }
+      ],
+      tip: "Il Ponte di Veja si è formato in due milioni di anni. La vostra foto durerà mezzo secondo — ne vale comunque la pena."
+    },
+    {
+      icon: 'cablecar', theme: 'enrosadira',
+      title: "Monte Baldo",
+      teaser: "Duemila metri d'altezza, comodamente in funivia, con vista sul Garda.",
+      timeline: [
+        { time: "08:30", text: "Partenza per Malcesine." },
+        { time: "09:00", text: "Funivia Malcesine–Monte Baldo (presto, per evitare la coda)." },
+        { time: "09:30", text: "Passeggiata in quota tra laghetti alpini e fiori di montagna." },
+        { time: "13:00", text: "Pranzo al Rifugio Chierego, 2050m: vista su Garda e Dolomiti insieme." },
+        { time: "pomeriggio", text: "Tempo libero in quota, magari fino al tramonto." }
+      ],
+      info: [
+        { label: "Pranzo", name: "Rifugio Chierego", detail: "2050m — casunzei, speck, scamorza, 30–45€" }
+      ],
+      tip: "In quota ci sono anche dieci gradi in meno che a valle: una giacca leggera, anche se in macchina sembra inutile."
+    },
+    {
+      icon: 'canoe', theme: 'carezza',
+      title: "Lago di Corlo",
+      teaser: "Un giorno di puro relax: lago tranquillo, canoa se vi va, altrimenti solo pace.",
+      timeline: [
+        { time: "mattina", text: "Partenza verso il Lago di Corlo, un lago quieto e poco affollato." },
+        { time: "giornata", text: "Attività a scelta: canoa, SUP, oppure una passeggiata tranquilla intorno al lago." },
+        { time: "pranzo", text: "Pranzo fronte lago: provate le trote locali." },
+        { time: "pomeriggio", text: "Gelato e caffè, con tutta calma." }
+      ],
+      info: [],
+      tip: "Nessuna fretta oggi: è il giorno del relax vero."
+    },
+    {
+      icon: 'toast', theme: 'amarone',
+      title: "Lessinia e cena d'addio",
+      teaser: "L'ultimo giorno: un altopiano silenzioso e una cena speciale per salutarci.",
+      timeline: [
+        { time: "09:30", text: "Passeggiata facile verso il Rifugio Graziani (circa 2 ore, tra prati e boschi)." },
+        { time: "12:30", text: "Pranzo in quota al Rifugio Graziani: casunzei e formaggio di malga." },
+        { time: "pomeriggio", text: "Un'oretta di riposo in terrazza, a guardare le Piccole Dolomiti." },
+        { time: "20:00", text: "Cena d'addio a Verona, per brindare insieme a questa settimana." }
+      ],
+      info: [
+        { label: "Pranzo", name: "Rifugio Graziani", detail: "1200m, 25–35€" },
+        { label: "Cena d'addio", name: "Groppa · da Moser · Le Arche", detail: "Tre ottimi indirizzi in centro a Verona per il gran finale" }
+      ],
+      tip: "Un brindisi con l'Amarone per chiudere in bellezza: questa settimana resterà nei ricordi più a lungo di qualsiasi foto."
+    }
+  ];
+
+  var elWelcome = document.getElementById('screen-welcome');
+  var elCalendar = document.getElementById('screen-calendar');
+  var elDetail = document.getElementById('screen-detail');
+  var elDayList = document.getElementById('day-list');
+  var elDetailBody = document.getElementById('detail-body');
+  var elDetailTitle = document.getElementById('detail-title');
+  var elDetailEyebrow = document.getElementById('detail-eyebrow');
+  var elDetailBadge = document.getElementById('detail-badge');
+
+  function buildCalendar(){
+    var html = '';
+    for (var i = 0; i < DAYS.length; i++){
+      var d = DAYS[i];
+      var th = THEMES[d.theme];
+      html += '' +
+        '<button class="day-card" type="button" data-index="' + i + '" style="--card-tint:' + th.tint + ';--card-accent:' + th.accent + '">' +
+          '<span class="day-badge">' + svg(d.icon) + '</span>' +
+          '<span class="day-card-text">' +
+            '<span class="day-card-eyebrow">Giorno ' + (i + 1) + '</span>' +
+            '<span class="day-card-title">' + d.title + '</span>' +
+            '<span class="day-card-teaser">' + d.teaser + '</span>' +
+          '</span>' +
+          svg('chevronRight', 'day-card-chev') +
+        '</button>';
+    }
+    elDayList.innerHTML = html;
+    var cards = elDayList.querySelectorAll('.day-card');
+    for (var j = 0; j < cards.length; j++){
+      cards[j].addEventListener('click', function(){
+        openDay(parseInt(this.getAttribute('data-index'), 10));
+      });
+    }
+  }
+
+  function renderInfo(items){
+    if (!items || !items.length) return '';
+    var out = '';
+    for (var i = 0; i < items.length; i++){
+      var it = items[i];
+      out += '' +
+        '<div class="info-card">' +
+          '<div class="info-label">' + it.label + '</div>' +
+          '<div class="info-name">' + it.name + '</div>' +
+          '<div class="info-detail">' + it.detail + '</div>' +
+        '</div>';
+    }
+    return out;
+  }
+
+  function openDay(index){
+    var d = DAYS[index];
+    var th = THEMES[d.theme];
+
+    elDetailBadge.innerHTML = svg(d.icon);
+    elDetailBadge.style.setProperty('--card-tint', th.tint);
+    elDetailBadge.style.setProperty('--card-accent', th.accent);
+    elDetailEyebrow.textContent = 'Giorno ' + (index + 1) + ' di ' + DAYS.length;
+    elDetailTitle.textContent = d.title;
+
+    var timelineHtml = '<div class="section-label">La giornata</div><ul class="timeline">';
+    for (var i = 0; i < d.timeline.length; i++){
+      timelineHtml += '<li><span class="t-time">' + d.timeline[i].time + '</span><span class="t-text">' + d.timeline[i].text + '</span></li>';
+    }
+    timelineHtml += '</ul>';
+
+    var infoHtml = renderInfo(d.info);
+
+    var tipHtml = d.tip
+      ? '<div class="tip-card">' + svg('sparkle') + '<span class="tip-text">' + d.tip + '</span></div>'
+      : '';
+
+    var navHtml = '<div class="detail-nav">';
+    if (index > 0){
+      navHtml += '<button class="btn-nav" type="button" data-nav="prev"><span><small>Giorno precedente</small>' + DAYS[index - 1].title + '</span>' + svgInline('chevronLeftBtn') + '</button>';
+    }
+    if (index < DAYS.length - 1){
+      navHtml += '<button class="btn-nav next" type="button" data-nav="next"><span><small>Giorno successivo</small>' + DAYS[index + 1].title + '</span>' + svgInline('chevronRightBtn') + '</button>';
+    } else {
+      navHtml += '<button class="btn-finish" type="button" data-nav="finish">Torna al calendario</button>';
+    }
+    navHtml += '</div>';
+
+    elDetailBody.innerHTML =
+      '<p class="detail-teaser">' + d.teaser + '</p>' +
+      timelineHtml +
+      (infoHtml ? '<div class="section-label">Dove mangiare / dormire</div>' + infoHtml : '') +
+      tipHtml +
+      navHtml;
+
+    var prevBtn = elDetailBody.querySelector('[data-nav="prev"]');
+    var nextBtn = elDetailBody.querySelector('[data-nav="next"]');
+    var finishBtn = elDetailBody.querySelector('[data-nav="finish"]');
+    if (prevBtn) prevBtn.addEventListener('click', function(){ openDay(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ openDay(index + 1); });
+    if (finishBtn) finishBtn.addEventListener('click', closeDay);
+
+    elCalendar.hidden = true;
+    elDetail.hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  function svgInline(kind){
+    var path = kind === 'chevronLeftBtn'
+      ? '<path d="M14.5 5 8 12l6.5 7"></path>'
+      : '<path d="M9.5 5 16 12l-6.5 7"></path>';
+    return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + path + '</svg>';
+  }
+
+  function closeDay(){
+    elDetail.hidden = true;
+    elCalendar.hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('btn-back').addEventListener('click', closeDay);
+
+  function dismissWelcome(){
+    if (elWelcome.classList.contains('is-hidden')) return;
+    elWelcome.classList.add('is-hidden');
+    elCalendar.hidden = false;
+  }
+  elWelcome.addEventListener('click', dismissWelcome);
+  setTimeout(dismissWelcome, 4600);
+
+  buildCalendar();
+})();
+</script>
+</body>
+</html>
