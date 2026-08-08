@@ -257,7 +257,7 @@
       <path fill="#241823" d="M0,90 L0,58 L36,26 L64,50 L96,14 L128,52 L162,30 L198,58 L232,20 L266,50 L300,26 L336,54 L368,34 L400,52 L400,90 Z"></path>
     </svg>
     <div class="welcome-inner">
-      <p class="welcome-eyebrow">Da Roma a Verona</p>
+      <p class="welcome-eyebrow">Da Bari a Verona</p>
       <h1 class="welcome-title">Benvenuti</h1>
       <p class="welcome-sub">In questi giorni scopriremo insieme Verona e tutto quello che c'è intorno.</p>
       <p class="welcome-hint">Toccate per iniziare</p>
@@ -312,7 +312,8 @@
     canoe: '<path d="M2.5 15c2 2.2 17 2.2 19 0"></path><path d="M5.5 15c.5-4.2 3-8.2 6.5-8.2s6 4 6.5 8.2"></path><path d="M17.3 4.2 20 6.8"></path><path d="M20 4.2 17.3 6.8"></path>',
     toast: '<path d="M5 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M7.5 11v8"></path><path d="M5 19h5"></path><path d="M14 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M16.5 11v8"></path><path d="M14 19h5"></path>',
     chevronRight: '<path d="M9.5 5 16 12l-6.5 7"></path>',
-    sparkle: '<path d="M12 3v5"></path><path d="M12 16v5"></path><path d="M3 12h5"></path><path d="M16 12h5"></path><path d="M6.5 6.5l2.5 2.5"></path><path d="M15 15l2.5 2.5"></path><path d="M17.5 6.5 15 9"></path><path d="M9 15l-2.5 2.5"></path>'
+    sparkle: '<path d="M12 3v5"></path><path d="M12 16v5"></path><path d="M3 12h5"></path><path d="M16 12h5"></path><path d="M6.5 6.5l2.5 2.5"></path><path d="M15 15l2.5 2.5"></path><path d="M17.5 6.5 15 9"></path><path d="M9 15l-2.5 2.5"></path>',
+    tree: '<path d="M12 4 8 10h8Z"></path><path d="M12 8 6 16h12Z"></path><path d="M12 16v5"></path>'
   };
 
   var THEMES = {
@@ -328,6 +329,7 @@
   var DAYS = [
     {
       icon: 'suitcase', theme: 'enrosadira',
+      date: "Sabato 8 agosto",
       title: "Arrivo a Verona",
       teaser: "Si comincia! Arrivo, un po' di riposo e la prima passeggiata insieme.",
       timeline: [
@@ -339,23 +341,26 @@
       tip: "Prima sera tranquilla: il tempo di respirare l'aria di Verona prima della settimana che vi aspetta."
     },
     {
-      icon: 'arch', theme: 'carezza',
-      title: "Verona da scoprire",
-      teaser: "Il centro storico tutto per voi: piazze, il balcone più famoso e un buon piatto veronese.",
+      icon: 'tree', theme: 'carezza',
+      date: "Domenica 9 agosto",
+      title: "Parco Natura Viva",
+      teaser: "Una giornata immersa nel verde tra safari e animali: 42 ettari di bosco, oltre 1.500 animali di 250 specie.",
       timeline: [
-        { time: "09:30", text: "Piazza Erbe, il mercato più antico di Verona." },
-        { time: "10:30", text: "Casa di Giulietta e il suo balcone." },
-        { time: "11:30", text: "Castelvecchio e il Ponte Scaligero." },
-        { time: "13:00", text: "Pranzo tipico in centro: bigoli o risotto all'Amarone." },
-        { time: "15:30", text: "Passeggiata lungo l'Adige fino a Ponte Pietra." },
-        { time: "17:00", text: "Gelato con calma, tempo libero." },
-        { time: "19:30", text: "Aperitivo in piazza." }
+        { time: "09:30", text: "Partenza da Verona verso Bussolengo (circa 20 minuti)." },
+        { time: "10:00", text: "Parco Faunistico a piedi: dai leoni alle giraffe, tra i sentieri nel bosco." },
+        { time: "12:30", text: "Pausa pranzo al parco." },
+        { time: "14:00", text: "Parco Safari in auto: leoni, tigri bianche e altri animali in semilibertà." },
+        { time: "16:00", text: "Tempo libero, magari una tappa al parco dei dinosauri." },
+        { time: "18:00", text: "Rientro a Verona." }
       ],
-      info: [],
-      tip: "Verona si gira benissimo a piedi: scarpe comode e nessuna fretta."
+      info: [
+        { label: "Ingresso", name: "Parco Natura Viva", detail: "Località Quercia, Bussolengo — 22€ percorso pedonale, 26€ con Safari Auto, orario 10:00–18/19:00" }
+      ],
+      tip: "Al Parco Safari tenete i finestrini chiusi: è l'unico momento in cui una tigre bianca vi guarderà da un metro di distanza."
     },
     {
       icon: 'mountain', theme: 'enrosadira',
+      date: "Lunedì 10 agosto",
       title: "Lago di Carezza e Novacella",
       teaser: "Si parte per le Dolomiti: il lago più turchese d'Italia e un'abbazia di 900 anni.",
       timeline: [
@@ -373,6 +378,7 @@
     },
     {
       icon: 'drop', theme: 'carezza',
+      date: "Martedì 11 agosto",
       title: "Lago di Braies e Dobbiaco",
       teaser: "Il lago più fotografato d'Italia, poi uno più tranquillo, poi si torna a casa a Verona.",
       timeline: [
@@ -390,6 +396,7 @@
     },
     {
       icon: 'grapes', theme: 'amarone',
+      date: "Mercoledì 12 agosto",
       title: "Cascate, Valpolicella e Ponte di Veja",
       teaser: "Cascate nel bosco, un buon bicchiere di Amarone e un ponte di roccia naturale.",
       timeline: [
@@ -406,6 +413,7 @@
     },
     {
       icon: 'cablecar', theme: 'enrosadira',
+      date: "Giovedì 13 agosto",
       title: "Monte Baldo",
       teaser: "Duemila metri d'altezza, comodamente in funivia, con vista sul Garda.",
       timeline: [
@@ -422,6 +430,7 @@
     },
     {
       icon: 'canoe', theme: 'carezza',
+      date: "Venerdì 14 agosto",
       title: "Lago di Corlo",
       teaser: "Un giorno di puro relax: lago tranquillo, canoa se vi va, altrimenti solo pace.",
       timeline: [
@@ -435,6 +444,7 @@
     },
     {
       icon: 'toast', theme: 'amarone',
+      date: "Sabato 15 agosto",
       title: "Lessinia e cena d'addio",
       teaser: "L'ultimo giorno: un altopiano silenzioso e una cena speciale per salutarci.",
       timeline: [
@@ -469,7 +479,7 @@
         '<button class="day-card" type="button" data-index="' + i + '" style="--card-tint:' + th.tint + ';--card-accent:' + th.accent + '">' +
           '<span class="day-badge">' + svg(d.icon) + '</span>' +
           '<span class="day-card-text">' +
-            '<span class="day-card-eyebrow">Giorno ' + (i + 1) + '</span>' +
+            '<span class="day-card-eyebrow">Giorno ' + (i + 1) + ' · ' + d.date + '</span>' +
             '<span class="day-card-title">' + d.title + '</span>' +
             '<span class="day-card-teaser">' + d.teaser + '</span>' +
           '</span>' +
@@ -507,7 +517,7 @@
     elDetailBadge.innerHTML = svg(d.icon);
     elDetailBadge.style.setProperty('--card-tint', th.tint);
     elDetailBadge.style.setProperty('--card-accent', th.accent);
-    elDetailEyebrow.textContent = 'Giorno ' + (index + 1) + ' di ' + DAYS.length;
+    elDetailEyebrow.textContent = 'Giorno ' + (index + 1) + ' di ' + DAYS.length + ' · ' + d.date;
     elDetailTitle.textContent = d.title;
 
     var timelineHtml = '<div class="section-label">La giornata</div><ul class="timeline">';
@@ -536,7 +546,7 @@
     elDetailBody.innerHTML =
       '<p class="detail-teaser">' + d.teaser + '</p>' +
       timelineHtml +
-      (infoHtml ? '<div class="section-label">Dove mangiare / dormire</div>' + infoHtml : '') +
+      (infoHtml ? '<div class="section-label">Informazioni utili</div>' + infoHtml : '') +
       tipHtml +
       navHtml;
 
