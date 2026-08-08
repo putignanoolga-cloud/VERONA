@@ -313,7 +313,8 @@
     toast: '<path d="M5 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M7.5 11v8"></path><path d="M5 19h5"></path><path d="M14 4h5l-.9 7a1.8 1.8 0 0 1-3.2 0z"></path><path d="M16.5 11v8"></path><path d="M14 19h5"></path>',
     chevronRight: '<path d="M9.5 5 16 12l-6.5 7"></path>',
     sparkle: '<path d="M12 3v5"></path><path d="M12 16v5"></path><path d="M3 12h5"></path><path d="M16 12h5"></path><path d="M6.5 6.5l2.5 2.5"></path><path d="M15 15l2.5 2.5"></path><path d="M17.5 6.5 15 9"></path><path d="M9 15l-2.5 2.5"></path>',
-    tree: '<path d="M12 4 8 10h8Z"></path><path d="M12 8 6 16h12Z"></path><path d="M12 16v5"></path>'
+    tree: '<path d="M12 4 8 10h8Z"></path><path d="M12 8 6 16h12Z"></path><path d="M12 16v5"></path>',
+    sun: '<circle cx="12" cy="12" r="4"></circle><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M4.2 4.2l1.4 1.4"></path><path d="M18.4 18.4l1.4 1.4"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><path d="M4.2 19.8l1.4-1.4"></path><path d="M18.4 5.6l1.4-1.4"></path>'
   };
 
   var THEMES = {
@@ -371,7 +372,7 @@
         { time: "17:30", text: "Arrivo a Fortezza, Hotel Schloss Freundsberg: check-in e relax." }
       ],
       info: [
-        { label: "Pranzo", name: "Stube Prameshuber", detail: "Via Principale 8, Nova Levante — casunzei e speck di cervo, 18–25€" },
+        { label: "Pranzo", name: "Stube Prameshuber · Ristorante Central · Löwen", detail: "Nova Levante — stube tipiche con casunzei e specialità sudtirolesi, 18–25€ circa" },
         { label: "Pernottamento", name: "Hotel Schloss Freundsberg", detail: "Fortezza — un castello medievale con vista sulla vallata" }
       ],
       tip: "Si dorme in un castello vero, questa notte."
@@ -390,7 +391,7 @@
         { time: "18:45", text: "Rientro a Verona, cena con calma." }
       ],
       info: [
-        { label: "Pranzo", name: "Rifugio Sorau", detail: "Casunzei, speck, scamorza — vista sul lago, 20–30€" }
+        { label: "Pranzo", name: "Rifugio Sorau · Brückele · Gasthaus Mosslhof", detail: "Zona Lago di Braies — casunzei, speck e piatti tirolesi, 20–35€ (meglio prenotare, zona molto frequentata)" }
       ],
       tip: "Il Lago di Braies è stato set di una nota serie TV, ma la vista dal vivo batte lo schermo."
     },
@@ -400,14 +401,14 @@
       title: "Cascate, Valpolicella e Ponte di Veja",
       teaser: "Cascate nel bosco, un buon bicchiere di Amarone e un ponte di roccia naturale.",
       timeline: [
-        { time: "09:30", text: "Cascate di Molina: passeggiata facile nel bosco (1h30)." },
+        { time: "09:30", text: "Cascate di Molina: passeggiata facile nel bosco (1h30) — oppure il percorso verde, più breve e comodo (30 minuti)." },
         { time: "12:30", text: "Pranzo e degustazione alla Cantina Valpolicella Negrar." },
         { time: "15:00", text: "Ponte di Veja: un arco di roccia naturale sospeso sopra la valle." },
         { time: "20:00", text: "Cena con vista al Paradiso Imperfetto, Sant'Anna d'Alfaedo." }
       ],
       info: [
-        { label: "Pranzo", name: "Cantina Valpolicella Negrar", detail: "Degustazione vini + pranzo, Amarone DOC, 35–50€" },
-        { label: "Cena", name: "Paradiso Imperfetto", detail: "Sant'Anna d'Alfaedo, tel. 045 7286504 — vista sulla valle, 45–65€, prenotazione consigliata" }
+        { label: "Pranzo", name: "Cantina Valpolicella Negrar · Corte Borghetti · La Dama", detail: "Negrar — degustazione e pranzo tra i vigneti, Amarone DOC, 30–50€ circa" },
+        { label: "Cena", name: "Paradiso Imperfetto · Al Tesoro · Trattoria Ponte di Veja", detail: "Sant'Anna d'Alfaedo — cucina di Lessinia e Valpolicella con vista sulla valle, 40–65€, prenotazione consigliata" }
       ],
       tip: "Il Ponte di Veja si è formato in due milioni di anni. La vostra foto durerà mezzo secondo — ne vale comunque la pena."
     },
@@ -419,12 +420,12 @@
       timeline: [
         { time: "08:30", text: "Partenza per Malcesine." },
         { time: "09:00", text: "Funivia Malcesine–Monte Baldo (presto, per evitare la coda)." },
-        { time: "09:30", text: "Passeggiata in quota tra laghetti alpini e fiori di montagna." },
+        { time: "09:30", text: "Passeggiata in quota tra laghetti alpini e fiori di montagna — oppure il sentiero pianeggiante panoramico vicino alla stazione (30 minuti, senza dislivello, vista sul Garda)." },
         { time: "13:00", text: "Pranzo al Rifugio Chierego, 2050m: vista su Garda e Dolomiti insieme." },
         { time: "pomeriggio", text: "Tempo libero in quota, magari fino al tramonto." }
       ],
       info: [
-        { label: "Pranzo", name: "Rifugio Chierego", detail: "2050m — casunzei, speck, scamorza, 30–45€" }
+        { label: "Pranzo", name: "Rifugio Chierego · Rifugio Fiori del Baldo · Malga Pralongo", detail: "Monte Baldo — rifugi in quota con casunzei, speck e vista su Garda e Dolomiti, 25–45€ circa" }
       ],
       tip: "In quota ci sono anche dieci gradi in meno che a valle: una giacca leggera, anche se in macchina sembra inutile."
     },
@@ -445,19 +446,31 @@
     {
       icon: 'toast', theme: 'amarone',
       date: "Sabato 15 agosto",
-      title: "Lessinia e cena d'addio",
-      teaser: "L'ultimo giorno: un altopiano silenzioso e una cena speciale per salutarci.",
+      title: "Lessinia e cena",
+      teaser: "Un altopiano silenzioso e una cena speciale in centro a Verona.",
       timeline: [
-        { time: "09:30", text: "Passeggiata facile verso il Rifugio Graziani (circa 2 ore, tra prati e boschi)." },
+        { time: "09:30", text: "Passeggiata facile verso il Rifugio Graziani (circa 2 ore, tra prati e boschi) — oppure si arriva comodamente anche in auto, il rifugio ha parcheggio proprio davanti." },
         { time: "12:30", text: "Pranzo in quota al Rifugio Graziani: casunzei e formaggio di malga." },
         { time: "pomeriggio", text: "Un'oretta di riposo in terrazza, a guardare le Piccole Dolomiti." },
-        { time: "20:00", text: "Cena d'addio a Verona, per brindare insieme a questa settimana." }
+        { time: "20:00", text: "Cena a Verona, per brindare insieme a questa settimana." }
       ],
       info: [
-        { label: "Pranzo", name: "Rifugio Graziani", detail: "1200m, 25–35€" },
-        { label: "Cena d'addio", name: "Groppa · da Moser · Le Arche", detail: "Tre ottimi indirizzi in centro a Verona per il gran finale" }
+        { label: "Pranzo", name: "Rifugio Graziani · Rifugio Lausen · Bocca di Selva", detail: "Lessinia — rifugi tra prati e boschi con casunzei e formaggio di malga, 20–35€ circa" },
+        { label: "Cena", name: "Groppa · da Moser · Le Arche", detail: "Tre ottimi indirizzi in centro a Verona per il gran finale" }
       ],
       tip: "Un brindisi con l'Amarone per chiudere in bellezza: questa settimana resterà nei ricordi più a lungo di qualsiasi foto."
+    },
+    {
+      icon: 'sun', theme: 'carezza',
+      date: "Domenica 16 agosto",
+      title: "Relax",
+      teaser: "Un giorno senza programma: solo relax, con tutta calma, prima di ripartire.",
+      timeline: [
+        { time: "mattina", text: "Sveglia con calma, colazione senza fretta." },
+        { time: "giornata", text: "Nessun programma fisso: relax in hotel, un'ultima passeggiata in centro a Verona, o semplicemente riposo." }
+      ],
+      info: [],
+      tip: "Dopo una settimana così, anche non fare nulla è un ottimo programma."
     }
   ];
 
